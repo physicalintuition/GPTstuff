@@ -1,4 +1,17 @@
 {
-  "updatedAt": null,
-  "items": []
+  "updatedAt": "2026-10-12T09:50:31.453Z",
+  "items": [
+    {
+      "id": "arxiv-2610-13814",
+      "title": "An exact rotating black hole solution in Palatini Kalb–Ramond gravity",
+      "authors": "A. A. Araújo Filho",
+      "date": "2026-10-09",
+      "url": "https://arxiv.org/abs/2610.13814",
+      "priority": "High relevance",
+      "topic": "Metric-affine gravity · rotating black holes · q-desics benchmarks",
+      "summary": "Constructs an exact stationary, axisymmetric vacuum solution by varying the metric, connection and Kalb–Ramond field independently. A Kerr auxiliary geometry determines the physical metric. The paper derives timelike and null trajectories, circular-orbit stability and perihelion advance, and computes photon critical curves; the Kerr limit is recovered when the deformation parameter vanishes.",
+      "relevance": "A methodological comparison for q-desics: it treats metric and connection as independent geometric variables and connects a rotating geometry to orbital and photon observables. This relevance assessment is an inference; the model is classical metric-affine gravity, rather than a calculation of quantum expectation values or SER quantisation.",
+      "notes": "Reported in the morning digest on 12 October 2026; arXiv submission: 9 October 2026. The only paper recovered from that morning’s report."
+    }
+  ]
 }

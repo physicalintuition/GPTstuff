@@ -65,4 +65,10 @@ This webpage cannot read private ChatGPT task results by itself. Scheduled ChatG
 ## Preview locally
 Run `python3 -m http.server 8000` from the `research-radar` folder, then visit http://localhost:8000.
 
-No tracking, cookies or third-party JavaScript dependencies are included.
+No third-party JavaScript dependencies are included. Relevance voting calls the shared service described below; hosting infrastructure may set its own operational cookies.
+
+## Shared relevance votes
+
+Each paper has − (less relevant), 0 (neutral), and + (relevant) buttons with shared counts and bars. No sign-in is required. The service stores one vote per paper and hashed random browser voting key. Selecting another option replaces the vote; selecting the active option removes it. Clearing browser storage or using another browser creates a new identity, so this is intended for a trusted internal group, not an abuse-resistant public poll. The page and voting endpoint are publicly reachable.
+
+The client keeps its random voting key in localStorage (`radar-voter-key-v1`). Counts refresh once per minute while visible and on Refresh feeds. Counts are stored centrally in a Sites D1 database, not in the JSON feeds. API: https://research-radar-votes.flowygoose1.chatgpt.site/api/votes . Sites project: `appgprj_6accd23ff8608191bfb8a09055c3e49d`. Backend source is maintained in that Sites project's source repository. The endpoint validates paper IDs against `data/papers.json`, supports CORS for `https://physicalintuition.github.io`, and never returns other voters' identifiers.

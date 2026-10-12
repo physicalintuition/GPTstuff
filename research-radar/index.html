@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102632">
+  <meta name="description" content="A selective research radar for new physics preprints, academic jobs and research grants.">
+  <title>Research Radar · Physics Observatory</title>
+  <style>
+    :root{--navy:#122832;--navy2:#193541;--ink:#192e35;--muted:#68767b;--line:#d9dedb;--bg:#f3f4ef;--card:#fffefa;--green:#4c8d7d;--aqua:#b0ddd0;--amber:#d39952;--white:#f8f9f5;--shadow:0 8px 24px rgba(30,50,44,.05)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+    button,input,select{font:inherit}a{color:#176d64}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #b5b054;outline-offset:3px}button[disabled]{cursor:default;opacity:.5}
+    .app{min-height:100vh;display:grid;grid-template-columns:282px minmax(0,1fr)}
+    aside{background:var(--navy);color:#eff4ef;display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh;overflow:auto;border-right:1px solid #2b4751}
+    .brand{padding:31px 26px 26px;display:flex;align-items:center;gap:14px}
+    .orbit{position:relative;width:47px;height:47px;flex-shrink:0;border-radius:50%;border:1px solid #678c90;transform:rotate(-24deg)}
+    .orbit:before{content:"";position:absolute;inset:10px -7px;border:1px solid #8ebbb6;border-radius:50%;transform:rotate(48deg)}.orbit:after{content:"";position:absolute;left:18px;top:18px;width:9px;height:9px;border-radius:50%;background:#e5bb84;box-shadow:0 0 15px #e5bb8470}
+    .brand-name{font:25px/1.1 Georgia,"Times New Roman",serif;letter-spacing:-.5px}.brand-sub{margin-top:5px;font-size:10px;letter-spacing:1.8px;color:#a8c8c6;text-transform:uppercase}
+    .sidebar-label{padding:26px 26px 12px;color:#8ba7ae;font-weight:700;letter-spacing:1.6px;font-size:10px}
+    .nav{display:grid;gap:6px;padding:0 13px}.nav-btn{background:transparent;color:#d3e2df;border:1px solid transparent;border-radius:11px;padding:14px 14px;width:100%;text-align:left;display:flex;align-items:center;gap:13px;transition:background .2s}
+    .nav-btn:hover{background:#22404a}.nav-btn[aria-current="page"]{background:#294851;border-color:#41626b;color:#fff;box-shadow:inset 3px 0 #a6d6bd}
+    .nav-icon{font-size:20px;width:24px;text-align:center;color:#b5d9ca}.nav-copy{display:flex;flex-direction:column;flex:1}.nav-copy strong{font-size:14px;font-weight:600}.nav-copy small{font-size:11px;color:#a8bec1;margin-top:2px}
+    .nav-count{font-size:11px;background:#3c6166;color:#e9faf2;border-radius:30px;min-width:25px;height:25px;display:grid;place-items:center}
+    .side-note{padding:20px 18px;margin:29px 18px 0;border:1px solid #395762;border-radius:14px;background:#1c3742}
+    .side-note h3{margin:0 0 9px;color:#e2ebde;font-size:11px;text-transform:uppercase;letter-spacing:1.4px}.side-note p{margin:0;color:#a8c1c2;font-size:12px;line-height:1.65}
+    .side-footer{margin-top:auto;padding:22px 26px;color:#88a8aa;font-size:11px;display:flex;gap:9px;align-items:center}
+    .signal{width:7px;height:7px;display:inline-block;border-radius:100%;background:#80c6aa}
+    main{min-width:0;padding:0 38px 36px;max-width:1600px;width:100%;margin:auto}.topbar{height:90px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:12px}
+    .breadcrumb{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:#84908e}.breadcrumb span{color:#43665d}
+    .top-actions{display:flex;align-items:center;gap:14px}.update{font-size:11px;color:#7e8c89;white-space:nowrap}.refresh{display:flex;gap:6px;align-items:center;background:#fffefa;color:#355b56;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700}
+    .refresh:hover,.filter-btn:hover{background:#e7efeb}.hero{display:flex;justify-content:space-between;gap:28px;padding:32px 0 26px;align-items:center}
+    .eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#587d71}.hero h1{font:clamp(30px,3vw,43px)/1.15 Georgia,serif;letter-spacing:-1.2px;margin:9px 0 10px}.hero p{font-size:14px;color:#667773;margin:0;max-width:610px}
+    .hero-orbit{width:135px;height:95px;position:relative;opacity:.65;flex-shrink:0}.hero-orbit:before{content:"";position:absolute;inset:11px 13px;border:1px solid #8baa9c;border-radius:50%;transform:rotate(-24deg)}.hero-orbit:after{content:"";position:absolute;inset:18px -2px;border:1px solid #b7c7b5;border-radius:50%;transform:rotate(26deg)}.hero-orbit i{display:block;position:absolute;left:60px;top:38px;width:17px;height:17px;border-radius:50%;background:#bf935f;box-shadow:0 0 0 8px #bf935f19}
+    .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-bottom:27px}.stat{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px 19px;box-shadow:var(--shadow);display:flex;justify-content:space-between;gap:16px;align-items:center}.stat strong{display:block;font:30px/1.15 Georgia,serif}.stat span{color:#70817f;font-size:12px}.stat-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:10px;background:#eaf0e8;color:#598478;font-size:19px}
+    .section-card,.item,.empty{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}.section-card{overflow:hidden}
+    .section-head{padding:22px 23px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}.section-head h2{font:25px Georgia,serif;margin:0}.section-head p{margin:4px 0 0;color:var(--muted);font-size:12px}
+    .toolbar{display:flex;align-items:center;justify-content:space-between;padding:15px 22px;gap:12px;flex-wrap:wrap;background:#fbfbf7;border-bottom:1px solid #e5e7e0}
+    .search{display:flex;align-items:center;gap:8px;background:white;border:1px solid #d8dcd8;border-radius:9px;padding:0 12px;min-width:200px;flex:1;max-width:420px}.search span{color:#798a88}.search input{width:100%;height:37px;border:0;outline:0;background:transparent;font-size:13px}
+    .filters{display:flex;gap:7px;flex-wrap:wrap}.filter-btn{border:1px solid #dbe3df;border-radius:8px;background:#fff;padding:8px 11px;color:#58736a;font-weight:600;font-size:12px}.filter-btn[aria-pressed="true"]{background:#284f50;color:white;border-color:#284f50}
+    .list-area{padding:19px 21px 21px;display:grid;gap:13px}.item{box-shadow:none;padding:21px 21px 16px;transition:border-color .2s}.item:hover{border-color:#afc5b9}.item.reviewed{opacity:.68}.item-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+    .pill{border-radius:30px;padding:3px 9px;font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;background:#e9efec;color:#487267}.pill.high{background:#e1f0e8;color:#306d56}.pill.mid{background:#f8efdd;color:#93693b}.pill.type{background:#edf0f5;color:#50657f}.item-date{font-size:11px;color:#89928e;margin-left:auto}
+    .item h3{font:22px/1.28 Georgia,serif;margin:0 0 6px;color:#1c3c3c}.item .meta{font-size:12px;color:#72817e;margin-bottom:13px}.item p{font-size:13px;color:#50605d;line-height:1.7;margin:8px 0}.item p strong{color:#334b47}
+    .item-footer{border-top:1px solid #e4e8e3;margin-top:17px;padding-top:13px;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    .item-footer a{font-size:12px;font-weight:700;text-decoration:none}.item-footer a:hover{text-decoration:underline}.item-tools{display:flex;gap:8px}.mini{border:1px solid #d6dfd8;border-radius:8px;background:#fcfdfa;color:#51675f;padding:7px 10px;font-size:11px}.mini.active{background:#deefe4;color:#27624d;border-color:#b1d5be}
+    .empty{min-height:267px;box-shadow:none;padding:37px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;border-style:dashed;background:#fafbf7}
+    .empty-mark{font:46px/1 Georgia,serif;color:#b0c8bd}.empty h3{font:23px Georgia,serif;margin:16px 0 7px}.empty p{max-width:430px;margin:0;font-size:13px;color:#758481;line-height:1.65}
+    .digest{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-top:18px}.panel{background:#e9eeeb;border-radius:13px;padding:23px;border:1px solid #dce6df}.panel h3{font:20px Georgia,serif;margin:0 0 8px}.panel p,.panel li{font-size:13px;color:#5d6e68;line-height:1.75}.panel p{margin:0}.panel ul{margin:5px 0 0;padding-left:18px}.panel a{font-size:12px;font-weight:700;text-decoration:none}
+    .footline{font-size:11px;color:#8b9892;margin-top:28px;display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}.footline a{color:#637d71}
+    [hidden]{display:none!important}
+    @media(max-width:970px){.app{grid-template-columns:220px minmax(0,1fr)}.brand{padding:28px 16px}.brand-name{font-size:20px}.nav{padding:0 8px}.sidebar-label{padding-left:18px}.side-note{margin:25px 10px 0;padding:14px}.side-footer{padding-left:18px}main{padding:0 22px 28px}.digest{grid-template-columns:1fr}}
+    @media(max-width:700px){.app{display:block}aside{position:static;min-height:0;height:auto;overflow:visible}.brand{padding:16px 18px 9px}.brand-sub{display:none}.sidebar-label,.side-note,.side-footer{display:none}.nav{display:flex;padding:9px 12px 15px;gap:5px;overflow-x:auto}.nav-btn{min-width:max-content;padding:9px 12px}.nav-copy small,.nav-count{display:none}.nav-icon{font-size:17px}main{padding:0 16px 24px}.topbar{height:62px}.hero{padding:25px 0 20px}.hero-orbit{display:none}.stats{gap:8px}.stat{padding:11px}.stat strong{font-size:25px}.stat-icon{display:none}.section-head{padding:17px}.toolbar{padding:12px}.list-area{padding:12px}.item{padding:16px}.item h3{font-size:20px}.update{display:none}}
+    @media(max-width:400px){.stats{grid-template-columns:1fr}.stat{padding:10px 14px}.stat strong{font-size:22px}.stat span{font-size:12px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.item,.nav-btn{transition:none}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside aria-label="Physics tasks">
+    <div class="brand"><div class="orbit" aria-hidden="true"></div><div><div class="brand-name">Research Radar</div><div class="brand-sub">Physics Observatory</div></div></div>
+    <div class="sidebar-label">MY PHYSICS TASKS</div>
+    <nav class="nav" aria-label="Dashboard sections">
+      <button class="nav-btn" data-view="overview" aria-current="page"><span class="nav-icon" aria-hidden="true">◎</span><span class="nav-copy"><strong>Overview</strong><small>Your research at a glance</small></span></button>
+      <button class="nav-btn" data-view="papers"><span class="nav-icon" aria-hidden="true">≋</span><span class="nav-copy"><strong>New Papers</strong><small>Preprint intelligence</small></span><span class="nav-count" id="paperCount">0</span></button>
+      <button class="nav-btn" data-view="opportunities"><span class="nav-icon" aria-hidden="true">⌁</span><span class="nav-copy"><strong>Jobs &amp; Grants</strong><small>Career and funding radar</small></span><span class="nav-count" id="oppCount">0</span></button>
+    </nav>
+    <div class="side-note"><h3>Research focus</h3><p>q-Desics · quantum geometry · SER quantisation · gravitation · black holes · neutron physics</p></div>
+    <div class="side-footer"><span class="signal"></span> Selective alerts. No filler.</div>
+  </aside>
+  <main>
+    <div class="topbar"><div class="breadcrumb">PHYSICS / <span id="crumb">OVERVIEW</span></div><div class="top-actions"><span class="update" id="syncLabel">Loading data…</span><button class="refresh" id="refreshBtn" type="button" title="Check for new published research reports">↻ &nbsp;Refresh feeds</button></div></div>
+    <section class="hero"><div><div class="eyebrow" id="eyebrow">YOUR RESEARCH INTELLIGENCE</div><h1 id="headline">Only what matters.</h1><p id="subhead">A quiet place for significant new physics preprints, senior academic vacancies and research grants. Curated for relevance, not volume.</p></div><div class="hero-orbit" aria-hidden="true"><i></i></div></section>
+    <section class="stats" aria-label="Current results">
+      <div class="stat"><div><strong id="statPapers">0</strong><span>New papers</span></div><div class="stat-icon" aria-hidden="true">ψ</div></div>
+      <div class="stat"><div><strong id="statJobs">0</strong><span>Open positions</span></div><div class="stat-icon" aria-hidden="true">⌘</div></div>
+      <div class="stat"><div><strong id="statGrants">0</strong><span>Funding calls</span></div><div class="stat-icon" aria-hidden="true">◇</div></div>
+    </section>
+    <section class="section-card" aria-label="Research feed">
+      <div class="section-head"><div><h2 id="sectionTitle">Latest updates</h2><p id="sectionDesc">Reviewed opportunities and research developments will appear here.</p></div></div>
+      <div class="toolbar">
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="Search feed" placeholder="Search title, author, topic…"></label>
+        <div class="filters" id="filters" aria-label="Filter results"></div>
+      </div>
+      <div class="list-area" id="feed" aria-live="polite"></div>
+    </section>
+    <div class="digest">
+      <div class="panel"><h3>Precision over noise.</h3><p>This dashboard intentionally stays empty when nothing meets a high relevance threshold. Preprints should relate directly to q-desics or quantised spherical geometry (SER); opportunities should match a senior theoretical-physics profile.</p></div>
+      <div class="panel"><h3>How updates work</h3><p>Published reports are read from GitHub data files. This tab checks for changes every five minutes. ChatGPT scheduled tasks do not automatically publish to GitHub without a separate integration.</p></div>
+    </div>
+    <div class="footline"><span>Research Radar · Read / saved flags are stored only in this browser.</span><span><a href="https://github.com/physicalintuition/GPTstuff/tree/main/research-radar" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a></span></div>
+  </main>
+</div>
+<noscript><p style="padding:24px">Please enable JavaScript to view the research feeds.</p></noscript>
+<script>
+(() => {
+  'use strict';
+  const $=s=>document.querySelector(s);
+  const state={view:'overview',filter:'all',query:'',papers:[],jobs:[],grants:[],loaded:false,lastUpdate:null,failed:false};
+  const storeKey='research-radar-state-v1';
+  let saved={};
+  try{saved=JSON.parse(localStorage.getItem(storeKey)||'{}')||{}}catch{saved={}}
+  const save=()=>{try{localStorage.setItem(storeKey,JSON.stringify(saved))}catch{}};
+  const safeDate=d=>{if(!d)return null;const n=new Date(d);return Number.isNaN(n.getTime())?null:n};
+  const fmt=d=>{const t=safeDate(d);return t?t.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):''};
+  const el=(tag,cls,txt)=>{const node=document.createElement(tag);if(cls)node.className=cls;if(txt!==undefined)node.textContent=String(txt);return node};
+  const normalize=(items,kind)=>Array.isArray(items)?items.filter(x=>x&&typeof x==='object'&&x.id&&x.title&&x.url).map(x=>({...x,kind})).filter(x=>/^https:\/\//i.test(x.url)):[];
+  async function load(){
+    $('#refreshBtn').disabled=true;$('#syncLabel').textContent='Checking updates…';
+    try{
+      const bust=Date.now();
+      const [p,o]=await Promise.all([
+        fetch('./data/papers.json?v='+bust,{cache:'no-store'}),
+        fetch('./data/opportunities.json?v='+bust,{cache:'no-store'})
+      ]);
+      if(!p.ok||!o.ok)throw new Error('Could not load report files');
+      const [papers,opps]=await Promise.all([p.json(),o.json()]);
+      state.papers=normalize(papers.items,'papers');
+      state.jobs=normalize(opps.jobs,'jobs');
+      state.grants=normalize(opps.grants,'grants');
+      state.lastUpdate=[papers.updatedAt,opps.updatedAt].map(safeDate).filter(Boolean).sort((a,b)=>b-a)[0]||null;
+      state.failed=false;state.loaded=true;
+      $('#syncLabel').textContent=state.lastUpdate?'Published '+fmt(state.lastUpdate):'Ready · no published reports yet';
+    }catch(err){
+      state.failed=true;state.loaded=true;$('#syncLabel').textContent='Feed unavailable · retry';
+      console.warn('Research Radar:',err.message);
+    }finally{$('#refreshBtn').disabled=false;render()}
+  }
+  function total(k){return state[k].length}
+  function title(){
+    const info={
+      overview:['OVERVIEW','Only what matters.','A quiet place for significant physics preprints, senior academic vacancies and research grants. Curated for relevance, not volume.','Latest updates','The most relevant items across your research feeds.'],
+      papers:['NEW PAPERS','Ideas worth reading.','Selected new work on q-desics, quantum geometry, spherical spacetime quantisation and closely connected research.','New research papers','Scientific core ideas and their concrete connection to your work.'],
+      opportunities:['JOBS & GRANTS','The right next opportunity.','Senior academic positions in six selected countries, plus realistically applicable research funding.','Jobs & grants','Current opportunities, with application dates and eligibility considerations.']
+    }[state.view];
+    $('#crumb').textContent=info[0];$('#eyebrow').textContent=info[0]==='OVERVIEW'?'YOUR RESEARCH INTELLIGENCE':'CURATED PHYSICS RADAR';
+    $('#headline').textContent=info[1];$('#subhead').textContent=info[2];$('#sectionTitle').textContent=info[3];$('#sectionDesc').textContent=info[4];
+  }
+  function viewItems(){
+    const items=state.view==='papers'?state.papers:state.view==='opportunities'?[...state.jobs,...state.grants]:[...state.papers,...state.jobs,...state.grants];
+    return items.filter(x=>(state.filter==='all'||(state.filter==='saved'&&saved[x.id]?.saved)||(state.filter==='unread'&&!saved[x.id]?.reviewed)||(x.kind===state.filter))&&
+      [x.title,x.authors,x.institution,x.funder,x.summary,x.relevance,x.country,x.topic].join(' ').toLowerCase().includes(state.query))
+      .sort((a,b)=>(safeDate(b.date||b.postedAt||b.updatedAt)?.getTime()||0)-(safeDate(a.date||a.postedAt||a.updatedAt)?.getTime()||0));
+  }
+  function filters(){
+    const opts=state.view==='papers'?[['all','All papers'],['unread','Unread'],['saved','Saved']]:
+       state.view==='opportunities'?[['all','All'],['jobs','Positions'],['grants','Funding'],['saved','Saved']]:
+       [['all','All updates'],['papers','Papers'],['jobs','Positions'],['grants','Grants'],['saved','Saved']];
+    const wrap=$('#filters');wrap.replaceChildren();
+    if(!opts.some(([key])=>key===state.filter))state.filter='all';
+    for(const [key,label] of opts){
+      const btn=el('button','filter-btn',label);btn.type='button';btn.setAttribute('aria-pressed',state.filter===key?'true':'false');
+      btn.addEventListener('click',()=>{state.filter=key;render()});wrap.append(btn);
+    }
+  }
+  function para(label,value){
+    if(!value)return null;
+    const p=el('p');if(label){p.append(el('strong',null,label+' '))};p.append(document.createTextNode(String(value)));return p;
+  }
+  function card(x){
+    const kindLabel={papers:'PREPRINT',jobs:'POSITION',grants:'FUNDING'}[x.kind];
+    const box=el('article','item'+(saved[x.id]?.reviewed?' reviewed':''));
+    const top=el('div','item-top');top.append(el('span','pill type',kindLabel));
+    const tag=x.priority||x.fit||'';if(tag){top.append(el('span','pill '+(/high|very/i.test(tag)?'high':'mid'),tag))}
+    const date=fmt(x.date||x.postedAt||x.updatedAt);if(date)top.append(el('span','item-date',date));box.append(top);
+    box.append(el('h3',null,x.title));
+    const info=[x.authors,x.institution,x.funder,x.country].filter(Boolean).join(' · ');if(info)box.append(el('div','meta',info));
+    for(const [k,v] of [['Core idea:',x.summary],['Research connection:',x.relevance],['Eligibility:',x.eligibility],['Notes:',x.notes]]){
+      const p=para(k,v);if(p)box.append(p);
+    }
+    if(x.deadline){const p=para('Deadline:',fmt(x.deadline)||x.deadline);if(p)box.append(p)}
+    const footer=el('div','item-footer');
+    const link=el('a',null,x.kind==='papers'?'Read preprint ↗':'Open official listing ↗');
+    link.href=x.url;link.target='_blank';link.rel='noopener noreferrer';footer.append(link);
+    const tools=el('div','item-tools');
+    const bookmark=el('button','mini'+(saved[x.id]?.saved?' active':''),saved[x.id]?.saved?'★ Saved':'☆ Save');
+    const reviewed=el('button','mini'+(saved[x.id]?.reviewed?' active':''),saved[x.id]?.reviewed?'✓ Reviewed':'Mark reviewed');
+    for(const btn of [bookmark,reviewed])btn.type='button';
+    bookmark.addEventListener('click',()=>{saved[x.id]={...saved[x.id],saved:!saved[x.id]?.saved};save();render()});
+    reviewed.addEventListener('click',()=>{saved[x.id]={...saved[x.id],reviewed:!saved[x.id]?.reviewed};save();render()});
+    tools.append(bookmark,reviewed);footer.append(tools);box.append(footer);return box;
+  }
+  function render(){
+    title();
+    $('#paperCount').textContent=total('papers');$('#oppCount').textContent=total('jobs')+total('grants');
+    $('#statPapers').textContent=total('papers');$('#statJobs').textContent=total('jobs');$('#statGrants').textContent=total('grants');
+    document.querySelectorAll('.nav-btn').forEach(b=>{if(b.dataset.view===state.view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+    filters();const container=$('#feed');container.replaceChildren();
+    if(state.failed&&![...state.papers,...state.jobs,...state.grants].length){
+      const empty=el('div','empty');empty.append(el('div','empty-mark','⚠'),el('h3',null,'Unable to load the research feed'),el('p',null,'If you opened this file directly, start a local web server. On GitHub Pages, check that the data files were published alongside it.'));container.append(empty);return;
+    }
+    const items=viewItems();
+    if(!items.length){
+      const empty=el('div','empty');empty.append(el('div','empty-mark','∅'),el('h3',null,state.query||state.filter!=='all'?'No matches for these filters':'No verified items to show'),el('p',null,state.query||state.filter!=='all'?'Try another search or change the filter.':'This is intentional: the radar only publishes verified, sufficiently relevant findings. New results will appear here when the report files are updated.'));container.append(empty);return;
+    }
+    items.forEach(x=>container.append(card(x)));
+  }
+  document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',()=>{state.view=b.dataset.view;state.filter='all';state.query='';$('#search').value='';render();history.replaceState(null,'','#'+state.view)}));
+  $('#refreshBtn').addEventListener('click',load);
+  $('#search').addEventListener('input',e=>{state.query=e.target.value.trim().toLowerCase();render()});
+  const initial=location.hash.slice(1);if(['overview','papers','opportunities'].includes(initial))state.view=initial;
+  render();load();
+  setInterval(()=>{if(document.visibilityState==='visible')load()},5*60*1000);
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')load()});
+})();
+</script>
+</body>
+</html>

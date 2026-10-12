@@ -51,7 +51,9 @@
     @media(max-width:700px){.app{display:block}aside{position:static;min-height:0;height:auto;overflow:visible}.brand{padding:16px 18px 9px}.brand-sub{display:none}.sidebar-label,.side-note,.side-footer{display:none}.nav{display:flex;padding:9px 12px 15px;gap:5px;overflow-x:auto}.nav-btn{min-width:max-content;padding:9px 12px}.nav-copy small,.nav-count{display:none}.nav-icon{font-size:17px}main{padding:0 16px 24px}.topbar{height:62px}.hero{padding:25px 0 20px}.hero-orbit{display:none}.stats{gap:8px}.stat{padding:11px}.stat strong{font-size:25px}.stat-icon{display:none}.section-head{padding:17px}.toolbar{padding:12px}.list-area{padding:12px}.item{padding:16px}.item h3{font-size:20px}.update{display:none}}
     @media(max-width:400px){.stats{grid-template-columns:1fr}.stat{padding:10px 14px}.stat strong{font-size:22px}.stat span{font-size:12px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.item,.nav-btn{transition:none}}
-  </style>
+  
+.item.paper-with-votes{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:24px;align-items:start}.paper-copy{min-width:0}.vote-panel{border-left:1px solid #dde3eb;padding-left:20px}.vote-panel h4{font-size:14px;margin:0 0 10px}.vote-buttons{display:flex;gap:7px;margin-bottom:15px}.vote-button{width:44px;height:36px;background:white;border:1px solid #c7d1df;border-radius:7px;color:#34465d;font-size:20px;cursor:pointer}.vote-button[aria-pressed=true]{background:#e9edff;border:2px solid #5563bd;color:#2839a1}.vote-button:disabled{cursor:wait;opacity:.5}.vote-button:focus-visible{outline:3px solid #5563bd;outline-offset:3px}.vote-row{display:grid;grid-template-columns:14px 1fr 24px;gap:8px;align-items:center;font-size:12px;margin:7px 0}.vote-track{height:10px;background:#edf0f5;border-radius:4px;overflow:hidden}.vote-bar{height:100%;width:0;background:#738196;border-radius:4px}.vote-row:first-child .vote-bar{background:#b86d70}.vote-row:last-child .vote-bar{background:#409178}.vote-count{text-align:right;font-variant-numeric:tabular-nums}.vote-total,.vote-message{font-size:11px!important;color:#718097!important;line-height:1.5!important;margin:8px 0!important}.vote-message{min-height:32px}.vote-chart[aria-busy=true]{opacity:.5}@media(max-width:1050px){.item.paper-with-votes{grid-template-columns:minmax(0,1fr)}.vote-panel{border-left:0;border-top:1px solid #dde3eb;padding:15px 0 0;max-width:290px;width:100%}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -124,6 +126,28 @@
       console.warn('Research Radar:',err.message);
     }finally{$('#refreshBtn').disabled=false;render()}
   }
+
+  const voteApi='https://research-radar-votes.flowygoose1.chatgpt.site/api/votes';
+  let voteTotals={},myVotes={},votesReady=false,voteError=false,votesLoading=false;
+  const pendingVotes=new Set();
+  let voteKey=null;
+  try{voteKey=localStorage.getItem('radar-voter-key-v1');if(!/^[a-f0-9]{64}$/.test(voteKey||'')){voteKey=Array.from(crypto.getRandomValues(new Uint8Array(32))).map(x=>x.toString(16).padStart(2,'0')).join('');localStorage.setItem('radar-voter-key-v1',voteKey)}}catch{voteKey=null}
+  const voteHeaders=()=>voteKey?{Authorization:'Bearer '+voteKey}:{};
+  function acceptVotes(data){voteTotals=data.totals||{};myVotes=data.mine||{};votesReady=true;voteError=false;paintVotes()}
+  async function loadVotes(){if(votesLoading||pendingVotes.size)return;votesLoading=true;try{const r=await fetch(voteApi,{headers:voteHeaders(),cache:'no-store'});if(!r.ok)throw Error();acceptVotes(await r.json())}catch{voteError=true;paintVotes()}finally{votesLoading=false}}
+  async function castVote(id,value){if(pendingVotes.has(id)||!voteKey)return;pendingVotes.add(id);paintVotes();try{const r=await fetch(voteApi,{method:'POST',headers:{...voteHeaders(),'Content-Type':'application/json'},body:JSON.stringify({paper:id,value})});if(!r.ok)throw Error();acceptVotes(await r.json())}catch{voteError=true}finally{pendingVotes.delete(id);paintVotes()}}
+  function paintVotes(){document.querySelectorAll('.vote-panel').forEach(panel=>{
+    const id=panel.dataset.paper,t=voteTotals[id]||{},total=[-1,0,1].reduce((n,v)=>n+(Number(t[v])||0),0);
+    panel.querySelectorAll('.vote-button').forEach(b=>{b.disabled=!voteKey||pendingVotes.has(id)||(!votesReady&&!voteError);b.setAttribute('aria-pressed',myVotes[id]===Number(b.dataset.value)?'true':'false')});
+    panel.querySelectorAll('.vote-row').forEach(row=>{const count=Number(t[row.dataset.value])||0;row.querySelector('.vote-count').textContent=votesReady?count:'—';row.querySelector('.vote-bar').style.width=(total?100*count/total:0)+'%'});
+    panel.querySelector('.vote-total').textContent=votesReady?total+' vote'+(total===1?'':'s')+' · shared totals':'Loading shared votes…';
+    panel.querySelector('.vote-message').textContent=!voteKey?'Enable browser storage to vote.':pendingVotes.has(id)?'Saving…':voteError?'Connection problem. Retry your vote or refresh.':Object.hasOwn(myVotes,id)?'Your vote is selected. Click it again to remove it.':'No sign-in. One vote per browser.';
+  })}
+  function votePanel(id){const panel=el('div','vote-panel');panel.dataset.paper=id;panel.setAttribute('role','group');panel.setAttribute('aria-label','Paper relevance voting');panel.append(el('h4',null,'Relevant?'));
+    const buttons=el('div','vote-buttons');for(const [value,label,meaning] of [[-1,'−','Less relevant'],[0,'0','Neutral'],[1,'+','Relevant']]){const b=el('button','vote-button',label);b.type='button';b.dataset.value=String(value);b.title=meaning;b.setAttribute('aria-label',meaning);b.setAttribute('aria-pressed','false');b.disabled=true;b.addEventListener('click',()=>castVote(id,myVotes[id]===value?null:value));buttons.append(b)}panel.append(buttons);
+    const chart=el('div','vote-chart');chart.setAttribute('aria-label','Votes by relevance');for(const [value,label] of [[-1,'−'],[0,'0'],[1,'+']]){const row=el('div','vote-row');row.dataset.value=String(value);row.append(el('span',null,label));const track=el('div','vote-track');track.append(el('div','vote-bar'));row.append(track,el('span','vote-count','—'));chart.append(row)}panel.append(chart,el('p','vote-total','Loading shared votes…'));const msg=el('p','vote-message','No sign-in. One vote per browser.');msg.setAttribute('role','status');panel.append(msg);return panel;
+  }
+
   function total(k){return state[k].length}
   function title(){
     const info={
@@ -176,7 +200,7 @@
     for(const btn of [bookmark,reviewed])btn.type='button';
     bookmark.addEventListener('click',()=>{saved[x.id]={...saved[x.id],saved:!saved[x.id]?.saved};save();render()});
     reviewed.addEventListener('click',()=>{saved[x.id]={...saved[x.id],reviewed:!saved[x.id]?.reviewed};save();render()});
-    tools.append(bookmark,reviewed);footer.append(tools);box.append(footer);return box;
+    tools.append(bookmark,reviewed);footer.append(tools);box.append(footer);if(x.kind==='papers'){box.classList.add('paper-with-votes');const copy=el('div','paper-copy');while(box.firstChild)copy.append(box.firstChild);box.append(copy,votePanel(x.id))}return box;
   }
   function render(){
     title();
@@ -191,15 +215,16 @@
     if(!items.length){
       const empty=el('div','empty');empty.append(el('div','empty-mark','∅'),el('h3',null,state.query||state.filter!=='all'?'No matches for these filters':'No verified items to show'),el('p',null,state.query||state.filter!=='all'?'Try another search or change the filter.':'This is intentional: the radar only publishes verified, sufficiently relevant findings. New results will appear here when the report files are updated.'));container.append(empty);return;
     }
-    items.forEach(x=>container.append(card(x)));
+    items.forEach(x=>container.append(card(x)));paintVotes();
   }
   document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',()=>{state.view=b.dataset.view;state.filter='all';state.query='';$('#search').value='';render();history.replaceState(null,'','#'+state.view)}));
-  $('#refreshBtn').addEventListener('click',load);
+  $('#refreshBtn').addEventListener('click',()=>{load();loadVotes()});
   $('#search').addEventListener('input',e=>{state.query=e.target.value.trim().toLowerCase();render()});
   const initial=location.hash.slice(1);if(['overview','papers','opportunities'].includes(initial))state.view=initial;
-  render();load();
-  setInterval(()=>{if(document.visibilityState==='visible')load()},5*60*1000);
-  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')load()});
+  render();load();loadVotes();
+  setInterval(()=>{if(document.visibilityState==='visible')loadVotes()},60000);
+  setInterval(()=>{if(document.visibilityState==='visible'){load();loadVotes()}},5*60*1000);
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){load();loadVotes()}});
 })();
 </script>
 </body>

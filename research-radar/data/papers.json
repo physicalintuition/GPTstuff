@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-12T09:50:31.453Z",
+  "updatedAt": "2026-10-12T09:52:46.991Z",
   "items": [
     {
       "id": "arxiv-2610-13814",
@@ -12,6 +12,42 @@
       "summary": "Constructs an exact stationary, axisymmetric vacuum solution by varying the metric, connection and Kalb–Ramond field independently. A Kerr auxiliary geometry determines the physical metric. The paper derives timelike and null trajectories, circular-orbit stability and perihelion advance, and computes photon critical curves; the Kerr limit is recovered when the deformation parameter vanishes.",
       "relevance": "A methodological comparison for q-desics: it treats metric and connection as independent geometric variables and connects a rotating geometry to orbital and photon observables. This relevance assessment is an inference; the model is classical metric-affine gravity, rather than a calculation of quantum expectation values or SER quantisation.",
       "notes": "Reported in the morning digest on 12 October 2026; arXiv submission: 9 October 2026. The only paper recovered from that morning’s report."
+    },
+    {
+      "id": "arxiv-2610-08428",
+      "title": "Analytic solutions for the gravitational spin Hall equations and black hole shadows",
+      "authors": "Marius A. Oancea",
+      "date": "2026-10-06",
+      "url": "https://arxiv.org/abs/2610.08428",
+      "priority": "High relevance",
+      "topic": "Beyond-geodesic propagation · photon trajectories · black hole shadows",
+      "summary": "Derives analytic solutions of the gravitational spin Hall equations to first order in wavelength for a broad class of type D black-hole spacetimes with analytically solvable null geodesics. The framework also gives polarization-dependent corrections to black-hole shadow shapes.",
+      "relevance": "An inferred comparison benchmark for q-desic photon propagation and shadow observables: it provides controlled departures from null-geodesic motion. Its corrections arise from finite-wavelength and polarization effects in classical wave propagation, rather than quantum spacetime expectation values.",
+      "notes": "Reported in the morning digest on 11 October 2026. Date shown is the arXiv submission date. Relevance rating retained from that report."
+    },
+    {
+      "id": "arxiv-2610-07934",
+      "title": "Horizon-Scale Corrections to Black Hole Geometry from a Conserved Quantum Atmosphere",
+      "authors": "Kashif Ammar Yasir",
+      "date": "2026-10-06",
+      "url": "https://arxiv.org/abs/2610.07934",
+      "priority": "High relevance",
+      "topic": "Semiclassical geometry · horizon shifts · orbital observables",
+      "summary": "Models a coarse-grained near-horizon atmosphere as a conserved anisotropic source and solves for a static black-hole geometry at fixed ADM mass. The resulting mean geometry changes the horizon and surface gravity together with timelike effective potentials, ISCO location and near-horizon residence times. Stochastic metric fluctuations are left for a subsequent treatment.",
+      "relevance": "An inferred benchmark for linking quantum-inspired geometric changes to orbital observables. It helps distinguish motion in a dressed mean metric from q-desics governed by the expectation value of a connection, which need not equal the connection of the mean metric.",
+      "notes": "Reported in the morning digest on 11 October 2026. Date shown is the arXiv submission date. Relevance rating retained from that report."
+    },
+    {
+      "id": "arxiv-2610-11357",
+      "title": "Pre-geometric Black Holes with Spherical Symmetry",
+      "authors": "Giuseppe Meluccio and Egor Pluzhnikov",
+      "date": "2026-10-08",
+      "url": "https://arxiv.org/abs/2610.11357",
+      "priority": "Medium-high relevance",
+      "topic": "Spherical geometry · pre-geometric gravity · SER comparisons",
+      "summary": "Constructs exact spherically symmetric vacuum configurations in pre-geometric theories using a correspondence principle. The solutions are analogues of Schwarzschild–(anti-)de Sitter geometries; one has a Planck-scale (anti-)de Sitter core. The paper also examines a pre-geometric version of Birkhoff’s theorem.",
+      "relevance": "An inferred conceptual comparison for SER quantisation: both investigate spherical spacetime beyond the usual classical description. This paper concerns pre-geometric solutions and emergent metrics; it does not itself compute the metric or connection operator expectation values needed for q-desics.",
+      "notes": "Reported in the morning digest on 11 October 2026. Date shown is the arXiv submission date. Relevance rating retained from that report."
     }
   ]
 }

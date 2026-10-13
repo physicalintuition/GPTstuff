@@ -2,8 +2,10 @@ name: Research Radar auto-publish
 
 on:
   schedule:
-    - cron: '17 6 * * *'
-    - cron: '27 6 * * 1'
+    - cron: '17 8 * * *'
+      timezone: 'Europe/Vienna'
+    - cron: '27 8 * * 1'
+      timezone: 'Europe/Vienna'
   workflow_dispatch:
     inputs:
       feed:
@@ -56,7 +58,7 @@ jobs:
                 python research-radar/scripts/update_feeds.py opportunities
                 ;;
             esac
-          elif [ "$SCHEDULE" = "17 6 * * *" ]; then
+          elif [ "$SCHEDULE" = "17 8 * * *" ]; then
             python research-radar/scripts/update_feeds.py papers
           else
             python research-radar/scripts/update_feeds.py opportunities

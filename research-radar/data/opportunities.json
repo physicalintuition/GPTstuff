@@ -1,5 +1,55 @@
 {
-  "updatedAt": null,
+  "updatedAt": "2026-10-13T10:00:00Z",
   "jobs": [],
-  "grants": []
+  "grants": [
+    {
+      "id": "cog-stsm-2026-autumn",
+      "title": "Center of Gravity — Short-Term Scientific Missions",
+      "funder": "Center of Gravity / Niels Bohr Institute / Albert Einstein Institute",
+      "country": "Denmark or Germany (short scientific visit)",
+      "date": "2026-09-28",
+      "deadline": "2026-11-30",
+      "url": "https://www.aei.mpg.de/1514289/the-center-of-gravity-exchange-of-researchers-working-on-gravitational-physics?c=426597",
+      "priority": "High relevance · collaboration",
+      "eligibility": "Research visit to be developed jointly with a Center of Gravity member; visit must begin after April 2027 and finish before 1 October 2027. Application conditions and available support are specified in the official call.",
+      "relevance": "Useful for initiating a focused collaboration on effective geodesic dynamics, black-hole phenomenology, or gravitational theory, if an appropriate host scientist agrees. This is a short visit grant, not a salaried academic post.",
+      "notes": "Deadline taken from the dated Albert Einstein Institute announcement. Funding call, not a location-restricted job."
+    },
+    {
+      "id": "dfg-heisenberg-programme",
+      "title": "DFG Heisenberg Programme",
+      "funder": "Deutsche Forschungsgemeinschaft (DFG)",
+      "country": "Germany",
+      "date": "2026-10-12",
+      "url": "https://www.dfg.de/en/research-funding/funding-opportunities/programmes/individual/heisenberg",
+      "priority": "Very high relevance · eligibility check",
+      "eligibility": "Researchers qualified for a professorship by habilitation or equivalent track record; full professors abroad and holders of permanent W2/W3-equivalent roles are excluded. Applications accepted on a rolling basis.",
+      "relevance": "A potentially valuable route to pursue q-desics and SER quantisation independently at a German host institution. Your previous Associate Professor appointment abroad requires checking the exact nature and level of that role with DFG.",
+      "notes": "Ongoing programme, not a newly announced call. No fixed application deadline."
+    },
+    {
+      "id": "dfg-reinhart-koselleck",
+      "title": "DFG Reinhart Koselleck Projects",
+      "funder": "Deutsche Forschungsgemeinschaft (DFG)",
+      "country": "Germany (eligible host arrangement required)",
+      "date": "2026-10-12",
+      "url": "https://www.dfg.de/en/research-funding/funding-opportunities/programmes/individual/reinhart-koselleck-projects",
+      "priority": "High relevance · high-risk research",
+      "eligibility": "Outstanding researchers who hold or are eligible to hold professorships. German institutional integration and DFG applicant eligibility must be clarified; visiting affiliation by itself is generally insufficient. Rolling submissions.",
+      "relevance": "Could support a genuinely high-risk theoretical extension of q-desics or the quantum geometry programme if the proposal clearly lies outside standard DFG funding routes.",
+      "notes": "Five years, €500,000–€1.25 million. Ongoing programme, no fixed deadline."
+    },
+    {
+      "id": "fwf-principal-investigator-projects",
+      "title": "FWF Principal Investigator Projects",
+      "funder": "Austrian Science Fund (FWF)",
+      "country": "Austria",
+      "date": "2026-10-12",
+      "url": "https://www.fwf.ac.at/en/funding/portfolio/projects/principal-investigator-projects",
+      "priority": "High relevance · established funding",
+      "eligibility": "Qualified principal investigator and an Austrian host research institution with infrastructure; subject to the current FWF institutional work-time and research-focus conditions. Rolling submissions.",
+      "relevance": "A strong programme for a focused theoretical project computing quantum-geometric expectation values in SER quantisation and translating them into observable q-desic corrections.",
+      "notes": "Projects up to 48 months; this is an ongoing funding route, not a newly advertised call."
+    }
+  ]
 }

@@ -96,7 +96,7 @@
 (() => {
   'use strict';
   const $=s=>document.querySelector(s);
-  const state={view:'overview',filter:'all',query:'',papers:[],jobs:[],grants:[],loaded:false,lastUpdate:null,failed:false};
+  const state={view:'overview',filter:'all',query:'',papers:[],jobs:[],grants:[],prospects:[],loaded:false,lastUpdate:null,failed:false};
   const storeKey='research-radar-state-v1';
   let saved={};
   try{saved=JSON.parse(localStorage.getItem(storeKey)||'{}')||{}}catch{saved={}}
@@ -118,6 +118,7 @@
       state.papers=normalize(papers.items,'papers');
       state.jobs=normalize(opps.jobs,'jobs');
       state.grants=normalize(opps.grants,'grants');
+      state.prospects=normalize(opps.prospects,'prospects');
       state.lastUpdate=[papers.updatedAt,opps.updatedAt].map(safeDate).filter(Boolean).sort((a,b)=>b-a)[0]||null;
       state.failed=false;state.loaded=true;
       $('#syncLabel').textContent=state.lastUpdate?'Published '+fmt(state.lastUpdate):'Ready · no published reports yet';
@@ -159,14 +160,14 @@
     $('#headline').textContent=info[1];$('#subhead').textContent=info[2];$('#sectionTitle').textContent=info[3];$('#sectionDesc').textContent=info[4];
   }
   function viewItems(){
-    const items=state.view==='papers'?state.papers:state.view==='opportunities'?[...state.jobs,...state.grants]:[...state.papers,...state.jobs,...state.grants];
-    return items.filter(x=>(state.filter==='all'||(state.filter==='saved'&&saved[x.id]?.saved)||(state.filter==='unread'&&!saved[x.id]?.reviewed)||(x.kind===state.filter))&&
+    const items=state.view==='papers'?state.papers:state.view==='opportunities'?[...state.jobs,...state.grants,...state.prospects]:[...state.papers,...state.jobs,...state.grants,...state.prospects];
+    return items.filter(x=>((state.filter==='all'&&x.kind!=='prospects')||(state.filter==='saved'&&saved[x.id]?.saved)||(state.filter==='unread'&&!saved[x.id]?.reviewed&&x.kind!=='prospects')||(x.kind===state.filter))&&
       [x.title,x.authors,x.institution,x.funder,x.summary,x.relevance,x.country,x.topic].join(' ').toLowerCase().includes(state.query))
       .sort((a,b)=>(safeDate(b.date||b.postedAt||b.updatedAt)?.getTime()||0)-(safeDate(a.date||a.postedAt||a.updatedAt)?.getTime()||0));
   }
   function filters(){
     const opts=state.view==='papers'?[['all','All papers'],['unread','Unread'],['saved','Saved']]:
-       state.view==='opportunities'?[['all','All'],['jobs','Positions'],['grants','Funding'],['saved','Saved']]:
+       state.view==='opportunities'?[['all','Open opportunities'],['jobs','Positions'],['grants','Funding'],['prospects','Watchlist'],['saved','Saved']]:
        [['all','All updates'],['papers','Papers'],['jobs','Positions'],['grants','Grants'],['saved','Saved']];
     const wrap=$('#filters');wrap.replaceChildren();
     if(!opts.some(([key])=>key===state.filter))state.filter='all';
@@ -180,7 +181,7 @@
     const p=el('p');if(label){p.append(el('strong',null,label+' '))};p.append(document.createTextNode(String(value)));return p;
   }
   function card(x){
-    const kindLabel={papers:'PREPRINT',jobs:'POSITION',grants:'FUNDING'}[x.kind];
+    const kindLabel={papers:'PREPRINT',jobs:'POSITION',grants:'FUNDING',prospects:'WATCHLIST · NOT OPEN'}[x.kind];
     const box=el('article','item'+(saved[x.id]?.reviewed?' reviewed':''));
     const top=el('div','item-top');top.append(el('span','pill type',kindLabel));
     const tag=x.priority||x.fit||'';if(tag){top.append(el('span','pill '+(/high|very/i.test(tag)?'high':'mid'),tag))}
@@ -208,7 +209,7 @@
     $('#statPapers').textContent=total('papers');$('#statJobs').textContent=total('jobs');$('#statGrants').textContent=total('grants');
     document.querySelectorAll('.nav-btn').forEach(b=>{if(b.dataset.view===state.view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
     filters();const container=$('#feed');container.replaceChildren();
-    if(state.failed&&![...state.papers,...state.jobs,...state.grants].length){
+    if(state.failed&&![...state.papers,...state.jobs,...state.grants,...state.prospects].length){
       const empty=el('div','empty');empty.append(el('div','empty-mark','⚠'),el('h3',null,'Unable to load the research feed'),el('p',null,'If you opened this file directly, start a local web server. On GitHub Pages, check that the data files were published alongside it.'));container.append(empty);return;
     }
     const items=viewItems();

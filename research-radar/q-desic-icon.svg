@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>q-desic — curved motion through quantum spacetime</title>
+  <rect width="64" height="64" rx="14" fill="#122832"/>
+  <g fill="none" stroke="#53897e" stroke-width="1.5" opacity=".6">
+    <path d="M7 17Q32 25 57 17M6 32Q32 41 58 32M7 47Q32 55 57 47"/>
+    <path d="M17 7Q27 32 17 57M32 6Q42 32 32 58M47 7Q57 32 47 57"/>
+  </g>
+  <path d="M43 27C43 13 18 12 16 29C14 46 38 49 43 32L48 52" fill="none" stroke="#b8f1df" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8 48C19 49 22 39 31 34S48 25 55 10" fill="none" stroke="#ffc56d" stroke-width="4.5" stroke-linecap="round"/>
+  <circle cx="49" cy="22" r="4.2" fill="#fff4dc"/>
+</svg>

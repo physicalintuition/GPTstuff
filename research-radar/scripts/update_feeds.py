@@ -54,6 +54,15 @@ JOB_PROMPT = """
 You are a conservative academic opportunity analyst. WEB SEARCH for new,
 current senior research jobs and grants, checking official sources such as
 INSPIRE-HEP, EURAXESS, university sites, FWF, DFG, SNSF and ERC.
+Specifically check the John Templeton Foundation's Mathematical & Physical
+Sciences funding area (templeton.org/funding-areas/mathematical-physical-sciences)
+and its grants calendar (templeton.org/grants/grant-calendar) for NEW,
+CURRENTLY OPEN funding that explicitly allows foundational theoretical
+quantum gravity / quantum spacetime or suitable precision gravity tests.
+The 2026 Templeton cycle is closed, and its Mathematical & Physical
+Sciences scope was limited to experimental/observational BSM searches or
+technosignatures using advanced AI/ML; do not list this closed call and
+do not assume the unpublished 2027 priorities match pure theory.
 Researcher: habilitated theoretical physicist, internationally experienced,
 working in quantum gravity, q-desics, canonical SER quantisation, GR,
 black holes, modified/semiclassical gravity, neutron gravitational physics.

@@ -61,8 +61,19 @@ CURRENTLY OPEN funding that explicitly allows foundational theoretical
 quantum gravity / quantum spacetime or suitable precision gravity tests.
 The 2026 Templeton cycle is closed, and its Mathematical & Physical
 Sciences scope was limited to experimental/observational BSM searches or
-technosignatures using advanced AI/ML; do not list this closed call and
-do not assume the unpublished 2027 priorities match pure theory.
+technosignatures using advanced AI/ML; do not list this closed call.
+IMPORTANT: The researcher has previously integrated AI/ML acceleration,
+physics-informed inference and ML trajectory analysis into q-desics, and
+is now starting an ML/AI collaboration with the Marietta Blau Institute.
+Therefore assess future Templeton programmes as interdisciplinary projects
+using substantive AI/ML rather than simply excluding them as pure theory.
+A concrete empirical new-physics test is still needed if future eligibility
+requires experimental or observational BSM research; do not claim that AI
+alone satisfies this. Also check the Intelligence Venture if the project
+would advance AI capabilities or science-of-discovery methodology, not
+simply use generic existing AI models. Only include in open-grants feed
+when the NEW 2027 or later official call is actually open and eligibility
+is confirmed. Do not infer 2027 guidelines from 2026.
 Researcher: habilitated theoretical physicist, internationally experienced,
 working in quantum gravity, q-desics, canonical SER quantisation, GR,
 black holes, modified/semiclassical gravity, neutron gravitational physics.
@@ -210,7 +221,7 @@ def opportunities_scan(client):
     result=ask(client,prompt,web=True)
     if not isinstance(result,dict) or not isinstance(result.get("jobs"),list) or not isinstance(result.get("grants"),list):
         raise ValueError("Unexpected jobs/grants response structure")
-    output={}
+    output={"prospects":old.get("prospects",[])}
     remaining=5
     for kind in ("jobs","grants"):
         previous=old.get(kind,[])

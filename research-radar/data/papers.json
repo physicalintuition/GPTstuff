@@ -1,6 +1,18 @@
 {
-  "updatedAt": "2026-10-12T09:52:46.991Z",
+  "updatedAt": "2026-10-14T07:11:00Z",
   "items": [
+    {
+      "id": "arxiv-2610-18521",
+      "title": "Linear Response to Black Hole Deformations",
+      "authors": "Stefan Hohenegger",
+      "date": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.18521",
+      "priority": "High relevance",
+      "topic": "Static spherical geometry · linear response · ISCO · black-hole shadows · q-desic observables",
+      "summary": "The author develops a linear-response-inspired framework to calculate leading changes in observables when the Schwarzschild geometry is deformed. The size of the deformation is organised using an eigenvalue of the Einstein tensor, interpreted as an effective external energy-momentum source. The framework is applied to static, spherically symmetric black holes, including shifts in particle-orbit observables, shadow size and scalar quasinormal modes.",
+      "relevance": "Direct methodological benchmark for q-desics: once SER quantisation supplies expectation values of metric and connection operators, the induced corrections to the photon sphere, ISCO or shadow could be compared with the metric-deformation response formalism. A crucial original question is whether corrections driven by <Gamma-hat> minus Gamma(<g-hat>) can be represented within the paper's metric-only parametrisation, or produce observational effects that cannot. This comparison is proposed here; it is not a result claimed by the author.",
+      "notes": "New arXiv submission 13 October 2026; independently checked against the official abstract. This paper does not calculate quantum-geometric operator expectation values."
+    },
     {
       "id": "arxiv-2610-13814",
       "title": "An exact rotating black hole solution in Palatini Kalb–Ramond gravity",

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-13T10:00:00Z",
+  "updatedAt": "2026-10-14T07:45:00Z",
   "jobs": [],
   "grants": [
     {
@@ -50,6 +50,20 @@
       "eligibility": "Qualified principal investigator and an Austrian host research institution with infrastructure; subject to the current FWF institutional work-time and research-focus conditions. Rolling submissions.",
       "relevance": "A strong programme for a focused theoretical project computing quantum-geometric expectation values in SER quantisation and translating them into observable q-desic corrections.",
       "notes": "Projects up to 48 months; this is an ongoing funding route, not a newly advertised call."
+    }
+  ],
+  "prospects": [
+    {
+      "id": "templeton-2027-mps-watch",
+      "title": "John Templeton Foundation — Mathematical & Physical Sciences (2027 watchlist)",
+      "funder": "John Templeton Foundation",
+      "country": "International · eligible nonprofit research host required",
+      "url": "https://www.templeton.org/funding-areas/mathematical-physical-sciences",
+      "priority": "Watchlist · not currently open",
+      "eligibility": "2026 OFI deadline was 15 July 2026. The Foundation has not announced its 2027 MPS guidelines or submission window. It generally funds charitable institutions internationally rather than individual researchers or for-profit entities. The 2026 MPS round required a substantive experimental or observational project targeting BSM physics or technosignatures, with significant AI/ML methodology.",
+      "relevance": "A potential 2027 direction combining SER-based quantum geometry, q-desic predictions, theory-informed AI/ML, and a concrete precision gravitational observation or experimental data-analysis programme. The planned collaboration with an AI/ML group at the Marietta Blau Institute strengthens the methodological fit, but observational/experimental BSM eligibility must be assessed against the new 2027 call.",
+      "notes": "Strategic prospect ONLY; this is not an open call. Monitor both the 2027 MPS guidelines and the Intelligence Venture if the research advances AI methodology, rather than merely applying existing AI tools. Do not count as an active grant.",
+      "date": "2026-10-14"
     }
   ]
 }

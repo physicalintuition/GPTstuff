@@ -1,6 +1,18 @@
 {
-  "updatedAt": "2026-10-14T07:11:00Z",
+  "updatedAt": "2026-10-16T07:45:00Z",
   "items": [
+    {
+      "id": "arxiv-2610-19616",
+      "title": "A quantum probabilistic approach to the emergence of an inflationary Starobinsky Universe",
+      "authors": "Eftychios Kaimakkamis",
+      "date": "2026-10-14",
+      "url": "https://arxiv.org/abs/2610.19616",
+      "priority": "High methodological relevance · SER quantisation",
+      "topic": "Minisuperspace · canonical quantisation · operator ordering · Hilbert-space measure",
+      "summary": "Die am 14. Oktober 2026 auf arXiv eingestellte Dissertation untersucht die kanonische Quantisierung eines eindimensionalen Minisuperspace-Modells und Ordnungsmehrdeutigkeiten in der Wheeler-DeWitt-Gleichung. Aus der Hermitizität des Hamiltonoperators leitet sie Einschränkungen für die Ordnungsfunktionen und das Maß des Hilbertraum-Skalarprodukts ab. Über eine Umdefinition der Wellenfunktion und den Pfadintegralformalismus diskutiert sie eine ordnungsunabhängige Formulierung; anschließend behandelt sie die Verallgemeinerung auf mehrdimensionale Minisuperspace-Modelle und Wahrscheinlichkeitsamplituden im Starobinsky-Modell.",
+      "relevance": "Konkreter methodischer Bezug zur kanonischen SER/SSS-Quantisierung von Koch und Riahinia: Hilbertraummaß, Selbstadjungiertheit und Ordnungswahl können die Berechnung geometrischer Erwartungswerte beeinflussen, die anschließend in die q-Desic-Gleichung eingehen. Eigene Anschlussfragen: Lässt sich das hier benutzte Kriterium der Ordnungsunabhängigkeit auf die SER-Hamilton- und Zusammenhangsoperatoren übertragen? Bleiben Erwartungswerte von inversen Metrikoperatoren und höheren Momenten unter solchen Umdefinitionen invariant? Die Arbeit selbst behandelt weder sphärisch-symmetrische Raumzeitoperatoren noch q-Desics.",
+      "notes": "Neu auf arXiv am 14.10.2026; Dissertation bereits im Januar 2026 verteidigt. Teile der Methodik beruhen auf bereits publizierten Arbeiten von 2024/2025 (arXiv:2407.03077, 2412.18532, 2512.23656). Kein Anspruch, dass alle Resultate originär neu sind."
+    },
     {
       "id": "arxiv-2610-18521",
       "title": "Linear Response to Black Hole Deformations",

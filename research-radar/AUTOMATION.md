@@ -27,10 +27,10 @@ GitHub Actions and the paid OpenAI API.
 
 ## Scheduled runs
 
-- Papers every day at about **08:17 Europe/Vienna**.
-- Jobs and grants every Monday at about **08:27 Europe/Vienna**.
+- Papers every **Monday** at about **08:17 Europe/Vienna**.
+- Jobs and grants every **Monday** at about **08:27 Europe/Vienna**.
 
-GitHub may delay scheduled execution. If no strong new items are found,
+Both feeds therefore run once per week. GitHub may delay scheduled execution. If no strong new items are found,
 the old feed remains unchanged and no new commit is created.
 
 ## Selection

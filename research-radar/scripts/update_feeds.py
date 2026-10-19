@@ -43,9 +43,12 @@ quantum expectation values, uncertainties, ordering, Schwarzschild-(A)dS,
 Heisenberg and Schrodinger representations.
 Exclude generic black-hole, cosmological and quantum papers unless they
 contribute something precisely to A or B.
-Use only the candidate ID keys given below. In GERMAN give 2-4 accurate
-sentences on each selected work's actual idea and a specific reason
-it matters to A or B, clearly distinguishing your own interpretations.
+Use only the candidate ID keys given below. Write ALL user-facing fields
+(summary, relevance, topic) in clear, precise ENGLISH, regardless of the
+language of the original abstract or previous ChatGPT reports. Give 2–4
+accurate sentences on each selected work's actual idea and a specific
+reason it matters to A or B, clearly distinguishing your own interpretations.
+Never output German-language summaries or relevance explanations.
 Return ONLY a valid JSON object of this shape:
 {"items":[{"id":"arxiv-NNNN-NNNNN","summary":"...","relevance":"...",
 "topic":"..."}]}. No markdown. Do not invent claims or fill slots.
